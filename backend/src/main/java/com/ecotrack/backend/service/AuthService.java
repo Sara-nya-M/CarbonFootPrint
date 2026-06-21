@@ -58,12 +58,8 @@ public class AuthService {
                 .build();
         streakRepository.save(streak);
 
-        // Perform login/authenticate for token generation
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
-        );
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String token = tokenProvider.generateToken(authentication);
+        // Directly generate token for the newly saved user
+        String token = tokenProvider.generateToken(savedUser.getEmail());
 
         return new AuthResponse(token, savedUser.getEmail(), savedUser.getId());
     }
