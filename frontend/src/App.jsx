@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import './App.css';
 
-const API_BASE = 'http://localhost:8080/api';
+const API_BASE = '/api';
 
 function App() {
   // Authentication & session state
@@ -556,7 +556,7 @@ function App() {
                 <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>Today</span>
               </div>
               <div className="breakdown-wrapper">
-                {todayActivity ? (
+                {todayActivity && dashboardData ? (
                   <div className="breakdown-bars">
                     {/* Transport Bar */}
                     <div className="breakdown-row">
